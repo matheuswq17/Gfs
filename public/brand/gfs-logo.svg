@@ -1,0 +1,95 @@
+<svg width="684" height="372" viewBox="0 0 684 372" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">GFS Variemix Brasil</title>
+  <desc id="desc">Logo GFS Variemix Brasil com letras em azul, verde e laranja, faixas curvas e elementos de comercio.</desc>
+  <defs>
+    <linearGradient id="blueText" x1="38" x2="205" y1="18" y2="154" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#138CD0"/>
+      <stop offset="0.62" stop-color="#075798"/>
+      <stop offset="1" stop-color="#083C72"/>
+    </linearGradient>
+    <linearGradient id="greenText" x1="232" x2="356" y1="14" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#48B52A"/>
+      <stop offset="0.58" stop-color="#168B35"/>
+      <stop offset="1" stop-color="#006B35"/>
+    </linearGradient>
+    <linearGradient id="orangeText" x1="401" x2="546" y1="15" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC51D"/>
+      <stop offset="0.5" stop-color="#F49B11"/>
+      <stop offset="1" stop-color="#DF6500"/>
+    </linearGradient>
+    <linearGradient id="greenSweep" x1="18" x2="550" y1="198" y2="162" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#006C38"/>
+      <stop offset="0.52" stop-color="#0B8638"/>
+      <stop offset="1" stop-color="#51B64A"/>
+    </linearGradient>
+    <linearGradient id="globe" x1="548" x2="640" y1="182" y2="277" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E92DE"/>
+      <stop offset="1" stop-color="#0064A8"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="125%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#0A2038" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="684" height="372" fill="#fff"/>
+
+  <g filter="url(#softShadow)">
+    <text x="32" y="154" font-family="Montserrat, Arial, sans-serif" font-size="172" font-weight="900" font-style="italic" letter-spacing="-11" fill="url(#blueText)">G</text>
+    <text x="224" y="154" font-family="Montserrat, Arial, sans-serif" font-size="172" font-weight="900" font-style="italic" letter-spacing="-10" fill="url(#greenText)">F</text>
+    <text x="390" y="154" font-family="Montserrat, Arial, sans-serif" font-size="172" font-weight="900" font-style="italic" letter-spacing="-9" fill="url(#orangeText)">S</text>
+  </g>
+
+  <path d="M24 166C84 218 184 230 315 199C427 173 510 151 593 163" stroke="#F3A51A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M22 154C95 235 221 244 357 207C455 181 533 174 633 201" stroke="url(#greenSweep)" stroke-width="24" stroke-linecap="round"/>
+  <path d="M43 177C136 215 257 211 372 184C449 166 519 154 590 170" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+  <path d="M50 182C144 215 255 211 362 187C442 169 512 158 584 172" stroke="#F8B116" stroke-width="5" stroke-linecap="round"/>
+
+  <text x="28" y="300" font-family="Montserrat, Arial, sans-serif" font-size="62" font-weight="900" fill="#33343A" letter-spacing="-2">VARIEMIX</text>
+  <path d="M26 334H103" stroke="#303036" stroke-width="4" stroke-linecap="round"/>
+  <text x="118" y="355" font-family="Montserrat, Arial, sans-serif" font-size="50" font-weight="900" fill="#00703C" letter-spacing="-1">BRASIL</text>
+  <path d="M329 334H406" stroke="#303036" stroke-width="4" stroke-linecap="round"/>
+
+  <g transform="translate(430 172)">
+    <ellipse cx="161" cy="154" rx="87" ry="20" fill="#0A2038" opacity="0.13"/>
+    <circle cx="134" cy="58" r="52" fill="url(#globe)" stroke="#0B5A94" stroke-width="3"/>
+    <path d="M92 53C111 44 134 46 152 32C156 50 183 49 184 67C163 71 157 88 135 88C118 88 107 75 92 76V53Z" fill="#D5E959"/>
+    <path d="M125 10C133 23 127 37 111 39C105 29 111 18 125 10Z" fill="#D5E959"/>
+    <path d="M164 27C179 32 189 45 193 59C181 55 170 52 161 59C156 47 156 35 164 27Z" fill="#D5E959"/>
+    <path d="M95 91C111 99 126 101 143 93C150 105 135 116 117 112C105 109 98 102 95 91Z" fill="#D5E959"/>
+    <path d="M84 58H186M134 8C119 24 112 45 112 60C112 78 120 99 134 111M134 8C149 24 156 45 156 60C156 78 148 99 134 111" stroke="#FFFFFF" stroke-width="3" opacity="0.5"/>
+
+    <rect x="14" y="63" width="65" height="91" rx="5" fill="#F5A216" stroke="#CB7700" stroke-width="3"/>
+    <rect x="25" y="80" width="42" height="27" fill="#FFC245" opacity="0.75"/>
+    <path d="M25 63C25 35 69 35 69 63" stroke="#263044" stroke-width="4" fill="none"/>
+    <path d="M56 63C56 38 97 38 97 66" stroke="#263044" stroke-width="4" fill="none"/>
+
+    <g transform="translate(70 101)">
+      <path d="M12 20H103L93 71H25L12 20Z" fill="#E9F4FF" stroke="#2F668B" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M0 0H19L29 20" stroke="#2F668B" stroke-width="6" stroke-linecap="round"/>
+      <path d="M31 31V63M56 28V66M82 25V68M23 44H98" stroke="#2F668B" stroke-width="4"/>
+      <rect x="43" y="5" width="30" height="23" rx="3" fill="#F5B51D"/>
+      <rect x="56" y="0" width="34" height="26" rx="3" fill="#15A144"/>
+      <rect x="74" y="5" width="27" height="22" rx="3" fill="#F2E07A"/>
+      <circle cx="35" cy="83" r="9" fill="#24324A"/>
+      <circle cx="87" cy="83" r="9" fill="#24324A"/>
+    </g>
+
+    <g transform="translate(182 87)">
+      <rect x="0" y="15" width="56" height="94" rx="7" fill="#24324A"/>
+      <rect x="6" y="21" width="44" height="80" rx="4" fill="#EAF5FA"/>
+      <path d="M4 23H52L48 45H8L4 23Z" fill="#F04F29"/>
+      <path d="M17 23H30L28 45H12L17 23Z" fill="#FFA31C"/>
+      <path d="M31 23H44L47 45H31V23Z" fill="#FFFFFF"/>
+      <rect x="16" y="60" width="26" height="29" rx="3" fill="#13A245"/>
+      <circle cx="28" cy="73" r="4" fill="#FAD045"/>
+    </g>
+
+    <g transform="translate(147 151)">
+      <path d="M0 25L31 6L77 24L43 47L0 25Z" fill="#F4C56D"/>
+      <path d="M0 25V72L43 96V47L0 25Z" fill="#C9832D"/>
+      <path d="M43 47L77 24V70L43 96V47Z" fill="#A86C25"/>
+      <path d="M31 6L77 24L43 47L0 25L31 6Z" stroke="#FFE0A3" stroke-width="2"/>
+      <path d="M22 37L64 15" stroke="#FFF3D7" stroke-width="8"/>
+    </g>
+  </g>
+</svg>

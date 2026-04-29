@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GFS Variemix Brasil
 
-## Getting Started
+E-commerce funcional em Next.js, TypeScript, Tailwind CSS, Prisma e Mercado Pago, criado para a marca brasileira **GFS Variemix Brasil**.
 
-First, run the development server:
+## O que esta pronto
+
+- Home comercial com vitrine, busca, blocos de credibilidade e blog.
+- Catalogo com busca, filtros por categoria e ordenacao.
+- Pagina individual de produto com SKU, estoque, descricao e especificacoes.
+- Carrinho persistente no navegador.
+- Checkout com validacao de estoque no servidor.
+- Integracao Mercado Pago via Preference para Pix e cartao.
+- Webhook para atualizar pagamento e baixar estoque quando aprovado.
+- Cadastro, login e sessao por cookie httpOnly.
+- Minha conta com pedidos do usuario.
+- Painel admin protegido por papel `ADMIN`.
+- CRUD de produtos, upload local de imagens, pedidos e CRUD de blog.
+- Contato com persistencia no banco.
+- Seed com 10 SKUs substituiveis e 3 posts.
+
+## Setup local
 
 ```bash
+npm install
+npm run setup
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Loja: http://localhost:3000
+- Admin: http://localhost:3000/admin
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Credenciais seed:
 
-## Learn More
+- Admin: `admin@gfsvariemix.com.br` / `Admin@12345`
+- Cliente: `cliente@gfsvariemix.com.br` / `Cliente@12345`
 
-To learn more about Next.js, take a look at the following resources:
+## Variaveis de ambiente
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copie `.env.example` para `.env` e ajuste:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+DATABASE_URL="file:./dev.db"
+AUTH_SECRET="troque-por-uma-string-longa-e-unica"
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+MERCADO_PAGO_ACCESS_TOKEN=""
+MERCADO_PAGO_PUBLIC_KEY=""
+MERCADO_PAGO_WEBHOOK_SECRET=""
+```
 
-## Deploy on Vercel
+Sem `MERCADO_PAGO_ACCESS_TOKEN`, o checkout salva o pedido e mostra uma tela clara de configuracao pendente. Com token de sandbox ou producao, o checkout redireciona para o Mercado Pago e permite pagar por Pix ou cartao.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Mercado Pago
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Crie uma aplicacao no painel de desenvolvedores do Mercado Pago.
+2. Use primeiro as credenciais de sandbox em `MERCADO_PAGO_ACCESS_TOKEN`.
+3. Configure `NEXT_PUBLIC_APP_URL` com a URL publica da loja.
+4. Cadastre o webhook:
+
+```txt
+https://sua-url.com/api/mercado-pago/webhook
+```
+
+Quando o pagamento volta como aprovado, o pedido muda para `PAID`, o pagamento para `APPROVED` e o estoque dos produtos e decrementado.
+
+## Banco de dados
+
+O projeto vem com SQLite para rodar imediatamente em qualquer maquina:
+
+```env
+DATABASE_URL="file:./dev.db"
+```
+
+Para publicar com Supabase/PostgreSQL, troque o provider em `prisma/schema.prisma` para `postgresql`, use a connection string do Supabase em `DATABASE_URL`, rode `npx prisma db push` e depois `npm run db:seed`.
+
+## Onde trocar marca e produtos
+
+- Logo: `public/brand/gfs-logo.svg`
+- Imagens de exemplo: `public/products/`
+- Seed dos 10 SKUs: `prisma/seed.ts`
+- Cores e acabamento visual: `src/app/globals.css`
+- Produtos em producao: `/admin/produtos`
+
+## Comandos uteis
+
+```bash
+npm run lint
+npm run build
+npm run db:push
+npm run db:seed
+```

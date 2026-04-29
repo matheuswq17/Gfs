@@ -1,0 +1,9 @@
+<svg width="720" height="560" viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="560" fill="#F4F7FB"/>
+  <path d="M0 420C126 352 252 344 380 398C502 450 610 442 720 376V560H0V420Z" fill="#202838"/>
+  <path d="M84 454C190 402 304 392 414 436C524 480 622 472 720 418" fill="none" stroke="#F4B227" stroke-width="24" stroke-linecap="round"/>
+  <rect x="194" y="135" width="332" height="210" rx="16" fill="#FFFFFF" stroke="#D6E1EE" stroke-width="4"/>
+  <rect x="230" y="176" width="260" height="42" rx="8" fill="#063F8F"/>
+  <rect x="230" y="238" width="260" height="42" rx="8" fill="#20A33A"/>
+  <text x="360" y="323" text-anchor="middle" font-family="Arial" font-size="34" font-weight="800" fill="#202838">SKU 03</text>
+</svg>
