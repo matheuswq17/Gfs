@@ -22,6 +22,19 @@
 .DS_Store
 *.pem
 
+# AI/editor assistant files
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.codex/
+.agents/
+.claude/
+.cursor/
+.windsurf/
+codex-*.log
+claude-*.log
+agent-*.log
+
 # debug
 npm-debug.log*
 yarn-debug.log*
