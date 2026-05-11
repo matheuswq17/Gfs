@@ -57,7 +57,7 @@ export function ProductFilters({ categories }: { categories: Category[] }) {
           <option value="price-desc">Maior preco</option>
           <option value="name">Nome A-Z</option>
         </select>
-        <button className="button-shine inline-flex h-12 items-center justify-center rounded-lg bg-[#f4b227] px-5 text-sm font-black text-[#202838] transition hover:bg-[#e8a51b]">
+        <button className="button-shine interactive-button inline-flex h-12 items-center justify-center rounded-lg bg-[#f4b227] px-5 text-sm font-black text-[#202838] transition hover:bg-[#e8a51b]">
           Aplicar
         </button>
       </div>

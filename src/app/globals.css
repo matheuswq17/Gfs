@@ -9,6 +9,7 @@
   --brand-gold: #f4b227;
   --brand-graphite: #202838;
   --brand-line: #dbe4f0;
+  --motion-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 @theme inline {
@@ -40,6 +41,10 @@ a {
 .container-gfs {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
+}
+
+.page-transition {
+  animation: gfs-page-enter 260ms var(--motion-ease) both;
 }
 
 .commerce-strip {
@@ -128,10 +133,12 @@ a {
 .motion-card {
   transform: translateY(0);
   transition:
-    transform 220ms ease,
+    transform 220ms var(--motion-ease),
     border-color 220ms ease,
     box-shadow 220ms ease,
-    background-color 220ms ease;
+    background-color 220ms ease,
+    opacity 220ms ease;
+  will-change: transform;
 }
 
 .motion-card:hover {
@@ -188,6 +195,94 @@ a {
 
 .button-shine:hover::after {
   transform: translateX(115%);
+}
+
+.interactive-button {
+  transition:
+    transform 180ms var(--motion-ease),
+    box-shadow 220ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
+}
+
+.interactive-button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(21, 35, 56, 0.14);
+}
+
+.interactive-button:not(:disabled):active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 8px 18px rgba(21, 35, 56, 0.12);
+}
+
+.catalog-grid-enter > * {
+  animation: gfs-card-enter 340ms var(--motion-ease) both;
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+.product-card {
+  transform-origin: center;
+}
+
+.product-card-image {
+  transition: transform 340ms var(--motion-ease), filter 260ms ease;
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.035);
+}
+
+.product-card-link {
+  cursor: pointer;
+}
+
+.product-card-link:active {
+  transform: scale(0.992);
+}
+
+.product-detail-media {
+  animation: gfs-product-media 320ms var(--motion-ease) both;
+}
+
+.product-detail-info {
+  animation: gfs-product-info 320ms var(--motion-ease) 70ms both;
+}
+
+.product-price-panel {
+  animation: gfs-product-info 300ms var(--motion-ease) 120ms both;
+}
+
+.product-buy-panel {
+  animation: gfs-product-info 300ms var(--motion-ease) 170ms both;
+}
+
+.gallery-main-image {
+  animation: gfs-image-swap 240ms var(--motion-ease) both;
+}
+
+.thumbnail-button {
+  transition:
+    transform 180ms var(--motion-ease),
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+}
+
+.thumbnail-button:hover {
+  transform: translateY(-2px);
+}
+
+.thumbnail-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.quantity-button {
+  transition: background-color 160ms ease, transform 160ms var(--motion-ease);
+}
+
+.quantity-button:active {
+  transform: scale(0.94);
 }
 
 .fade-up {
@@ -282,6 +377,66 @@ a {
   }
 }
 
+@keyframes gfs-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gfs-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gfs-product-media {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gfs-product-info {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gfs-image-swap {
+  from {
+    opacity: 0;
+    transform: scale(0.992);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes gfs-float {
   0%,
   100% {
@@ -335,6 +490,7 @@ a {
   *,
   *::before,
   *::after {
+    animation-delay: 0ms !important;
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;

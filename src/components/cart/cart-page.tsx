@@ -18,7 +18,7 @@ export function CartPage() {
           <p className="mt-2 text-[#5e6a7d]">Escolha produtos no catalogo para iniciar uma compra real.</p>
           <Link
             href="/produtos"
-            className="mt-6 inline-flex h-12 items-center justify-center rounded-lg bg-[#063f8f] px-6 text-sm font-black text-white"
+            className="interactive-button mt-6 inline-flex h-12 items-center justify-center rounded-lg bg-[#063f8f] px-6 text-sm font-black text-white"
           >
             Ver catalogo
           </Link>
@@ -37,7 +37,7 @@ export function CartPage() {
       <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
         <div className="space-y-4">
           {items.map((item) => (
-            <article key={item.id} className="grid gap-4 rounded-lg border border-[#dbe4f0] bg-white p-4 shadow-sm md:grid-cols-[132px_1fr_auto]">
+            <article key={item.id} className="motion-card grid gap-4 rounded-lg border border-[#dbe4f0] bg-white p-4 shadow-sm md:grid-cols-[132px_1fr_auto]">
               <Image src={item.image} alt={item.name} width={180} height={140} className="aspect-[1.2] rounded-lg object-cover" />
               <div>
                 <Link href={`/produtos/${item.slug}`} className="font-display text-xl font-black text-[#202838]">
@@ -51,7 +51,7 @@ export function CartPage() {
                   <button
                     type="button"
                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    className="grid w-10 place-items-center bg-[#f7f9fc]"
+                    className="quantity-button grid w-10 place-items-center bg-[#f7f9fc]"
                     aria-label="Diminuir quantidade"
                   >
                     <Minus size={16} />
@@ -60,7 +60,7 @@ export function CartPage() {
                   <button
                     type="button"
                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    className="grid w-10 place-items-center bg-[#f7f9fc]"
+                    className="quantity-button grid w-10 place-items-center bg-[#f7f9fc]"
                     aria-label="Aumentar quantidade"
                   >
                     <Plus size={16} />
@@ -69,7 +69,7 @@ export function CartPage() {
                 <button
                   type="button"
                   onClick={() => removeItem(item.id)}
-                  className="inline-flex h-10 items-center justify-center rounded-lg border border-[#dbe4f0] px-3 text-sm font-black text-red-600 hover:bg-red-50"
+                  className="interactive-button inline-flex h-10 items-center justify-center rounded-lg border border-[#dbe4f0] px-3 text-sm font-black text-red-600 hover:bg-red-50"
                 >
                   <Trash2 size={16} />
                 </button>
@@ -98,13 +98,13 @@ export function CartPage() {
           </div>
           <Link
             href="/checkout"
-            className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-lg bg-[#20a33a] px-5 text-sm font-black text-white transition hover:bg-[#188a30]"
+            className="interactive-button mt-6 inline-flex h-12 w-full items-center justify-center rounded-lg bg-[#20a33a] px-5 text-sm font-black text-white transition hover:bg-[#188a30]"
           >
             Finalizar compra
           </Link>
           <Link
             href="/produtos"
-            className="mt-3 inline-flex h-11 w-full items-center justify-center rounded-lg border border-[#dbe4f0] px-5 text-sm font-black text-[#202838] transition hover:bg-[#edf4fb]"
+            className="interactive-button mt-3 inline-flex h-11 w-full items-center justify-center rounded-lg border border-[#dbe4f0] px-5 text-sm font-black text-[#202838] transition hover:bg-[#edf4fb]"
           >
             Continuar comprando
           </Link>

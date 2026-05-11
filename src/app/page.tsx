@@ -145,9 +145,9 @@ export default async function Home() {
             Ver catalogo completo <ArrowRight size={17} />
           </Link>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        <div className="catalog-grid-enter grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {featuredProducts.map((product, index) => (
+            <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>
       </section>

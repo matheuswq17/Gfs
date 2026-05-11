@@ -69,7 +69,7 @@ export function CheckoutForm() {
         <div className="rounded-lg border border-dashed border-[#b9c8db] bg-white p-12 text-center">
           <h1 className="font-display text-3xl font-black text-[#202838]">Carrinho vazio</h1>
           <p className="mt-2 text-[#5e6a7d]">Adicione produtos antes de ir para o checkout.</p>
-          <Link href="/produtos" className="mt-6 inline-flex h-12 items-center rounded-lg bg-[#063f8f] px-6 text-sm font-black text-white">
+          <Link href="/produtos" className="interactive-button mt-6 inline-flex h-12 items-center rounded-lg bg-[#063f8f] px-6 text-sm font-black text-white">
             Ver produtos
           </Link>
         </div>
@@ -88,7 +88,7 @@ export function CheckoutForm() {
         <div className="space-y-6">
           {error && <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700">{error}</div>}
 
-          <section className="rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
+          <section className="motion-card rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
             <h2 className="font-display text-2xl font-black text-[#202838]">Comprador</h2>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <label>
@@ -110,7 +110,7 @@ export function CheckoutForm() {
             </div>
           </section>
 
-          <section className="rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
+          <section className="motion-card rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
             <h2 className="font-display text-2xl font-black text-[#202838]">Endereco de entrega</h2>
             <div className="mt-5 grid gap-4 md:grid-cols-6">
               <label className="md:col-span-2">
@@ -144,13 +144,13 @@ export function CheckoutForm() {
             </div>
           </section>
 
-          <section className="rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
+          <section className="motion-card rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
             <h2 className="font-display text-2xl font-black text-[#202838]">Pagamento</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               <button
                 type="button"
                 onClick={() => setPaymentMethod("PIX")}
-                className={`rounded-lg border p-4 text-left transition ${
+                className={`interactive-button rounded-lg border p-4 text-left transition ${
                   paymentMethod === "PIX" ? "border-[#20a33a] bg-[#f1fbf3]" : "border-[#dbe4f0] bg-white"
                 }`}
               >
@@ -161,7 +161,7 @@ export function CheckoutForm() {
               <button
                 type="button"
                 onClick={() => setPaymentMethod("CARD")}
-                className={`rounded-lg border p-4 text-left transition ${
+                className={`interactive-button rounded-lg border p-4 text-left transition ${
                   paymentMethod === "CARD" ? "border-[#063f8f] bg-[#edf4fb]" : "border-[#dbe4f0] bg-white"
                 }`}
               >
@@ -194,7 +194,7 @@ export function CheckoutForm() {
           </div>
           <button
             disabled={loading}
-            className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#20a33a] px-5 text-sm font-black text-white transition hover:bg-[#188a30] disabled:opacity-70"
+            className="interactive-button mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#20a33a] px-5 text-sm font-black text-white transition hover:bg-[#188a30] disabled:opacity-70"
           >
             {loading && <Loader2 className="animate-spin" size={18} />}
             Ir para pagamento

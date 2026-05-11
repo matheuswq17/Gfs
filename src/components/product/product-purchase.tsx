@@ -9,14 +9,14 @@ export function ProductPurchase({ product }: { product: CartProduct }) {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
+    <div className="product-buy-panel rounded-lg border border-[#dbe4f0] bg-white p-5 shadow-sm">
       <p className="text-sm font-bold text-[#20a33a]">{product.stock} unidades disponiveis</p>
       <div className="mt-4 flex items-center gap-3">
         <div className="flex h-12 overflow-hidden rounded-lg border border-[#dbe4f0]">
           <button
             type="button"
             onClick={() => setQuantity((value) => Math.max(1, value - 1))}
-            className="grid w-12 place-items-center bg-[#f7f9fc] text-[#202838] hover:bg-[#edf4fb]"
+            className="quantity-button grid w-12 place-items-center bg-[#f7f9fc] text-[#202838] hover:bg-[#edf4fb]"
             aria-label="Diminuir quantidade"
           >
             <Minus size={17} />
@@ -25,7 +25,7 @@ export function ProductPurchase({ product }: { product: CartProduct }) {
           <button
             type="button"
             onClick={() => setQuantity((value) => Math.min(product.stock, value + 1))}
-            className="grid w-12 place-items-center bg-[#f7f9fc] text-[#202838] hover:bg-[#edf4fb]"
+            className="quantity-button grid w-12 place-items-center bg-[#f7f9fc] text-[#202838] hover:bg-[#edf4fb]"
             aria-label="Aumentar quantidade"
           >
             <Plus size={17} />

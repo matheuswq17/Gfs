@@ -72,7 +72,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             </div>
             <Link
               href="/carrinho"
-              className="button-shine inline-flex h-11 items-center justify-center rounded-lg bg-[#063f8f] px-5 text-sm font-black text-white"
+              className="button-shine interactive-button inline-flex h-11 items-center justify-center rounded-lg bg-[#063f8f] px-5 text-sm font-black text-white"
             >
               Ver carrinho
             </Link>
@@ -95,9 +95,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         </div>
 
         {products.length > 0 ? (
-          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+          <div key={`${query || "todos"}-${category || "todas"}-${sort}`} className="catalog-grid-enter mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {products.map((product, index) => (
+              <ProductCard key={product.id} product={product} index={index} />
             ))}
           </div>
         ) : (

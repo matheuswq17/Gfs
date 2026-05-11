@@ -27,7 +27,7 @@ export function ProductGallery({ images, productName }: { images: GalleryImage[]
           width={900}
           height={700}
           priority
-          className="aspect-[1.18] w-full rounded-lg object-cover transition duration-300"
+          className="gallery-main-image aspect-[1.18] w-full rounded-lg object-cover transition duration-300"
         />
       </div>
 
@@ -42,7 +42,7 @@ export function ProductGallery({ images, productName }: { images: GalleryImage[]
                 type="button"
                 onClick={() => setSelectedIndex(index)}
                 className={clsx(
-                  "group rounded-lg border bg-white p-1 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#063f8f] focus:outline-none focus:ring-2 focus:ring-[#f4b227]",
+                  "thumbnail-button group rounded-lg border bg-white p-1 text-left shadow-sm hover:border-[#063f8f] focus:outline-none focus:ring-2 focus:ring-[#f4b227]",
                   isSelected ? "border-[#063f8f] ring-2 ring-[#f4b227]/70" : "border-[#dbe4f0]",
                 )}
                 aria-label={`Ver imagem ${index + 1} de ${productName}`}

@@ -69,16 +69,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       <section className="container-gfs grid gap-9 py-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <ProductGallery images={galleryImages} productName={product.name} />
+        <div className="product-detail-media">
+          <ProductGallery images={galleryImages} productName={product.name} />
+        </div>
 
-        <div>
+        <div className="product-detail-info">
           <span className="rounded-md bg-[#edf4fb] px-3 py-2 text-xs font-black uppercase text-[#063f8f]">
             {product.category.name}
           </span>
           <h1 className="mt-5 font-display text-4xl font-black leading-tight text-[#202838]">{product.name}</h1>
           <p className="mt-3 text-sm font-black uppercase text-[#66758a]">SKU {product.sku}</p>
           <p className="mt-5 text-lg leading-8 text-[#4f5f74]">{product.shortDescription}</p>
-          <div className="mt-6 flex items-end justify-between gap-5 rounded-lg border border-[#dbe4f0] bg-[#f7f9fc] p-5">
+          <div className="product-price-panel mt-6 flex items-end justify-between gap-5 rounded-lg border border-[#dbe4f0] bg-[#f7f9fc] p-5">
             <div>
               <p className="text-xs font-black uppercase text-[#66758a]">Preco unitario</p>
               <p className="mt-1 font-display text-4xl font-black text-[#063f8f]">{formatPrice(product.priceCents)}</p>
@@ -127,9 +129,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h2 className="mt-2 font-display text-3xl font-black text-[#202838]">Na mesma categoria</h2>
             </div>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {related.map((item) => (
-              <ProductCard key={item.id} product={item} />
+          <div className="catalog-grid-enter grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {related.map((item, index) => (
+              <ProductCard key={item.id} product={item} index={index} />
             ))}
           </div>
         </section>

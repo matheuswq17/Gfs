@@ -28,7 +28,7 @@ export function AddToCartButton({
       type="button"
       onClick={handleClick}
       disabled={product.stock <= 0}
-      className={`inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#063f8f] px-4 text-sm font-black text-white transition hover:bg-[#073271] disabled:cursor-not-allowed disabled:bg-slate-300 ${className}`}
+      className={`interactive-button inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#063f8f] px-4 text-sm font-black text-white transition hover:bg-[#073271] disabled:cursor-not-allowed disabled:bg-slate-300 ${className}`}
     >
       {added ? <Check size={18} /> : <ShoppingCart size={18} />}
       {product.stock <= 0 ? "Indisponivel" : added ? "Adicionado" : "Comprar"}
