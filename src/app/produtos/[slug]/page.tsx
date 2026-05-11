@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductPurchase } from "@/components/product/product-purchase";
 import { ProductCard } from "@/components/product/product-card";
+import { ProductGallery } from "@/components/product/product-gallery";
 import { formatPrice, parseSpecs } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
 
@@ -41,7 +41,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   const specs = parseSpecs(product.specifications);
-  const mainImage = product.images[0]?.url || "/products/gfs-produto-01.svg";
+  const mainImage = product.images[0]?.url || "/products/figurinhas-copa-2026-panini-1.jpeg";
+  const galleryImages = product.images.map((image) => ({
+    id: image.id,
+    url: image.url,
+    alt: image.alt,
+  }));
   const related = await prisma.product.findMany({
     where: {
       active: true,
@@ -64,25 +69,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       <section className="container-gfs grid gap-9 py-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
-          <div className="motion-card rounded-lg border border-[#dbe4f0] bg-white p-4 shadow-sm">
-            <Image
-              src={mainImage}
-              alt={product.images[0]?.alt || product.name}
-              width={720}
-              height={560}
-              priority
-              className="aspect-[1.18] w-full rounded-lg object-cover"
-            />
-          </div>
-          <div className="mt-3 grid grid-cols-4 gap-3">
-            {product.images.map((image) => (
-              <div key={image.id} className="rounded-lg border border-[#dbe4f0] bg-white p-1">
-                <Image src={image.url} alt={image.alt} width={180} height={140} className="aspect-[1.2] rounded-md object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
+        <ProductGallery images={galleryImages} productName={product.name} />
 
         <div>
           <span className="rounded-md bg-[#edf4fb] px-3 py-2 text-xs font-black uppercase text-[#063f8f]">

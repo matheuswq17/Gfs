@@ -5,7 +5,7 @@ import { formatPrice } from "@/lib/format";
 import type { ProductWithRelations } from "@/lib/types";
 
 export function ProductCard({ product }: { product: ProductWithRelations }) {
-  const image = product.images[0]?.url || "/products/gfs-produto-01.svg";
+  const image = product.images[0]?.url || "/products/figurinhas-copa-2026-panini-1.jpeg";
 
   return (
     <article className="motion-card feature-card group flex h-full flex-col rounded-lg border border-[#dbe4f0] bg-white shadow-sm hover:border-[#b9c8db]">

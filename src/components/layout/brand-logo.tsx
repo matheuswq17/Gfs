@@ -13,20 +13,24 @@ export function BrandLogo({
 }) {
   const sizeClass =
     variant === "hero"
-      ? "w-[300px] md:w-[410px]"
+      ? "h-[172px] w-[300px] md:h-[238px] md:w-[410px]"
       : variant === "compact"
-        ? "w-[116px] md:w-[142px]"
-        : "w-[142px] md:w-[166px]";
+        ? "h-[60px] w-[116px] md:h-[72px] md:w-[142px]"
+        : "h-[74px] w-[142px] md:h-[86px] md:w-[166px]";
 
   return (
-    <Link href="/" className={clsx("inline-flex items-center", className)} aria-label="GFS Variemix Brasil">
+    <Link
+      href="/"
+      className={clsx("relative inline-flex shrink-0 overflow-hidden", sizeClass, className)}
+      aria-label="GFS Variemix Brasil"
+    >
       <Image
-        src="/brand/gfs-logo.svg"
+        src="/brand/gfs-logo.jpeg"
         alt="GFS Variemix Brasil"
-        width={684}
-        height={372}
+        fill
+        sizes={variant === "hero" ? "(min-width: 768px) 410px, 300px" : "(min-width: 768px) 166px, 142px"}
         priority={priority}
-        className={clsx("h-auto", sizeClass)}
+        className="object-cover"
       />
     </Link>
   );

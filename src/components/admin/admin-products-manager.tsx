@@ -226,7 +226,7 @@ export function AdminProductsManager({ products, categories }: { products: Admin
           </label>
           <label className="block">
             <span className="mb-2 block text-sm font-black">Imagens (uma URL por linha)</span>
-            <textarea rows={4} className="form-input" value={imageLines} onChange={(event) => setImageLines(event.target.value)} placeholder="/products/gfs-produto-01.svg" />
+            <textarea rows={4} className="form-input" value={imageLines} onChange={(event) => setImageLines(event.target.value)} placeholder="/products/figurinhas-copa-2026-panini-1.jpeg" />
           </label>
           <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-[#dbe4f0] px-3 py-2 text-sm font-black">
             <Upload size={17} />

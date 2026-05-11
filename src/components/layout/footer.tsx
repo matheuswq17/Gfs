@@ -60,7 +60,7 @@ export function Footer() {
       <div className="border-t border-white/10 py-5">
         <div className="container-gfs flex flex-col gap-2 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
           <span>© 2026 GFS Variemix Brasil. Projeto de e-commerce funcional.</span>
-          <span>Base pronta para substituir imagens, credenciais e os 10 SKUs finais.</span>
+          <span>Base pronta para substituir imagens, credenciais e produtos pelo painel.</span>
         </div>
       </div>
     </footer>

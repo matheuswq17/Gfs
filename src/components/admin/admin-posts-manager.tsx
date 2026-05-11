@@ -139,7 +139,7 @@ export function AdminPostsManager({ posts }: { posts: AdminPost[] }) {
           </label>
           <label className="block">
             <span className="mb-2 block text-sm font-black">Imagem de capa</span>
-            <input name="coverImage" className="form-input" value={editing.coverImage || ""} onChange={(event) => setEditing({ ...editing, coverImage: event.target.value })} placeholder="/products/gfs-produto-01.svg" />
+            <input name="coverImage" className="form-input" value={editing.coverImage || ""} onChange={(event) => setEditing({ ...editing, coverImage: event.target.value })} placeholder="/products/figurinhas-copa-2026-panini-1.jpeg" />
           </label>
           <label className="flex items-center gap-2 text-sm font-black">
             <input type="checkbox" name="published" checked={editing.published} onChange={(event) => setEditing({ ...editing, published: event.target.checked })} />

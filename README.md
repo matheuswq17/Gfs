@@ -16,7 +16,7 @@ E-commerce funcional em Next.js, TypeScript, Tailwind CSS, Prisma e Mercado Pago
 - Painel admin protegido por papel `ADMIN`.
 - CRUD de produtos, upload local de imagens, pedidos e CRUD de blog.
 - Contato com persistencia no banco.
-- Seed com 10 SKUs substituiveis e 3 posts.
+- Seed com os 5 produtos informados e 3 posts.
 
 ## Setup local
 
@@ -77,10 +77,20 @@ Para publicar com Supabase/PostgreSQL, troque o provider em `prisma/schema.prism
 ## Onde trocar marca e produtos
 
 - Logo: `public/brand/gfs-logo.svg`
-- Imagens de exemplo: `public/products/`
-- Seed dos 10 SKUs: `prisma/seed.ts`
+- Imagens dos produtos: `public/products/`
+- Seed dos 5 produtos: `prisma/seed.ts`
 - Cores e acabamento visual: `src/app/globals.css`
 - Produtos em producao: `/admin/produtos`
+
+Catalogo atual do seed:
+
+- Pacote de Figurinhas Copa do Mundo 2026 Panini
+- Kit Bandagem Elástica VFG 3 Metros Preta + Protetor Bucal Vollo
+- Óculos Esportivo para Beach Tennis, Ciclismo e Corrida
+- Kit 3 Macacão Malha Liso Bebê Manga Curta Menina/Menino
+- Par de Luvas de Boxe e Muay Thai Cor Preta Vollo
+
+As fotos reais recebidas estao em `public/products/` e podem ser substituidas pelo painel admin quando necessario.
 
 ## Comandos uteis
 

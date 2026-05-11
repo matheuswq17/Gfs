@@ -72,7 +72,7 @@ export default async function Home() {
             </div>
             <div className="mt-9 grid gap-3 sm:grid-cols-3">
               {[
-                ["10", "SKUs iniciais prontos"],
+                ["5", "Produtos reais no catalogo"],
                 ["Pix", "Checkout Mercado Pago"],
                 ["Admin", "Gestao de produtos"],
               ].map(([value, label]) => (
@@ -91,7 +91,7 @@ export default async function Home() {
             {heroProduct && (
               <div className="relative z-10 mt-5 grid gap-4 rounded-lg bg-[#202838] p-4 text-white shadow-lg md:grid-cols-[180px_1fr]">
                 <Image
-                  src={heroProduct.images[0]?.url || "/products/gfs-produto-01.svg"}
+                  src={heroProduct.images[0]?.url || "/products/figurinhas-copa-2026-panini-1.jpeg"}
                   alt={heroProduct.name}
                   width={720}
                   height={560}
@@ -158,8 +158,9 @@ export default async function Home() {
             <p className="text-sm font-black uppercase text-[#f4b227]">Novidades de estoque</p>
             <h2 className="mt-3 font-display text-3xl font-black">Entradas recentes no catalogo</h2>
             <p className="mt-4 max-w-lg leading-7 text-white/75">
-              A loja esta pronta para receber os 10 produtos reais da GFS. Estes itens de exemplo
-              mostram como a vitrine se comporta com imagens, preco, estoque e categoria.
+              A loja agora trabalha com os 5 produtos informados para a GFS. As fotos reais ja
+              alimentam a vitrine; itens sem imagem na pasta recebida ficam com visual provisorio
+              pronto para troca no painel.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -170,7 +171,7 @@ export default async function Home() {
                 className="motion-card rounded-lg border border-white/15 bg-white/8 p-4 transition hover:bg-white/12"
               >
                 <Image
-                  src={product.images[0]?.url || "/products/gfs-produto-01.svg"}
+                  src={product.images[0]?.url || "/products/figurinhas-copa-2026-panini-1.jpeg"}
                   alt={product.name}
                   width={720}
                   height={560}

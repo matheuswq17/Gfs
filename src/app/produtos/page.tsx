@@ -67,7 +67,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <div>
               <h1 className="font-display text-4xl font-black text-[#202838]">Produtos para compra direta</h1>
               <p className="mt-3 max-w-2xl text-[#5e6a7d]">
-                Filtre por categoria, procure por SKU e monte seu carrinho com os itens de exemplo.
+                Filtre por categoria, procure por SKU e monte seu carrinho com os produtos atuais da GFS.
               </p>
             </div>
             <Link
