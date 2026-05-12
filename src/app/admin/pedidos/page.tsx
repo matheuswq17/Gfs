@@ -32,7 +32,6 @@ export default async function AdminOrdersPage() {
                 <span>{orderStatusLabel(order.status)}</span>
                 <span>{paymentStatusLabel(order.paymentStatus)}</span>
                 <span>Metodo: {order.paymentMethod === "PIX" ? "Stripe Pix" : "Stripe cartao"}</span>
-                {order.stripeCheckoutSessionId && <span>Stripe: {order.stripeCheckoutSessionId}</span>}
                 <span className="font-display text-2xl font-black text-[#063f8f]">{formatPrice(order.totalCents)}</span>
               </div>
             </div>
