@@ -40,6 +40,34 @@ function paymentMethodsFor(method: string) {
   return method === "PIX" ? (["pix"] as ["pix"]) : (["card"] as ["card"]);
 }
 
+export function getStripeErrorDetails(error: unknown) {
+  const stripeError = error as {
+    type?: string;
+    code?: string;
+    message?: string;
+    param?: string;
+    requestId?: string;
+    statusCode?: number;
+    raw?: {
+      type?: string;
+      code?: string;
+      message?: string;
+      param?: string;
+      requestId?: string;
+      statusCode?: number;
+    };
+  };
+
+  return {
+    type: stripeError.type || stripeError.raw?.type,
+    code: stripeError.code || stripeError.raw?.code,
+    message: stripeError.message || stripeError.raw?.message,
+    param: stripeError.param || stripeError.raw?.param,
+    requestId: stripeError.requestId || stripeError.raw?.requestId,
+    statusCode: stripeError.statusCode || stripeError.raw?.statusCode,
+  };
+}
+
 export async function createStripeCheckoutSession(orderId: string, origin?: string) {
   const stripe = getStripeClient();
   if (!stripe) return null;

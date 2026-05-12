@@ -55,6 +55,9 @@ export function CheckoutForm() {
     setLoading(false);
 
     if (!response.ok) {
+      if (data?.paymentMethodUnavailable === "PIX") {
+        setPaymentMethod("CARD");
+      }
       setError(data?.error || "Nao foi possivel iniciar o pagamento.");
       return;
     }

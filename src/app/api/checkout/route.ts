@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth";
 import { getBaseUrl } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
-import { createStripeCheckoutSession, hasStripeCredentials } from "@/lib/stripe";
+import { createStripeCheckoutSession, getStripeErrorDetails, hasStripeCredentials } from "@/lib/stripe";
 import { checkoutSchema } from "@/lib/validators";
 
 function generateOrderCode() {
@@ -102,7 +102,22 @@ export async function POST(request: NextRequest) {
       redirectUrl: session.url,
     });
   } catch (error) {
-    console.error(error);
+    const stripeError = getStripeErrorDetails(error);
+    console.error("Stripe checkout session error", stripeError);
+
+    if (parsed.data.paymentMethod === "PIX") {
+      return NextResponse.json(
+        {
+          error: "Pix temporariamente indisponível. Por favor, escolha pagamento com cartão.",
+          paymentMethodUnavailable: "PIX",
+          orderId: order.id,
+          orderCode: order.code,
+          stripeError: request.headers.get("x-gfs-debug") === "stripe" ? stripeError : undefined,
+        },
+        { status: 409 },
+      );
+    }
+
     return NextResponse.json(
       { error: "Pedido criado, mas houve falha ao criar a sessao de pagamento do Stripe." },
       { status: 502 },
