@@ -40,7 +40,7 @@ function paymentMethodsFor(method: string) {
   return method === "PIX" ? (["pix"] as ["pix"]) : (["card"] as ["card"]);
 }
 
-export async function createStripeCheckoutSession(orderId: string) {
+export async function createStripeCheckoutSession(orderId: string, origin?: string) {
   const stripe = getStripeClient();
   if (!stripe) return null;
 
@@ -51,7 +51,7 @@ export async function createStripeCheckoutSession(orderId: string) {
 
   if (!order) return null;
 
-  const baseUrl = getBaseUrl();
+  const baseUrl = getBaseUrl(origin);
   const priceBySku = getStripePriceMap();
 
   const session = await stripe.checkout.sessions.create(

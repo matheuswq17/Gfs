@@ -23,8 +23,12 @@ export function parseSpecs(value: string): Record<string, string> {
   }
 }
 
-export function getBaseUrl() {
-  return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+export function getBaseUrl(origin?: string) {
+  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL;
+  if (origin) return origin;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+
+  return "http://localhost:3000";
 }
 
 export function orderStatusLabel(status: string) {

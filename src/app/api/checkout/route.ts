@@ -85,12 +85,12 @@ export async function POST(request: NextRequest) {
       orderId: order.id,
       orderCode: order.code,
       providerConfigured: false,
-      redirectUrl: `${getBaseUrl()}/checkout/sucesso?order=${order.id}&setup=stripe`,
+      redirectUrl: `${getBaseUrl(request.nextUrl.origin)}/checkout/sucesso?order=${order.id}&setup=stripe`,
     });
   }
 
   try {
-    const session = await createStripeCheckoutSession(order.id);
+    const session = await createStripeCheckoutSession(order.id, request.nextUrl.origin);
     if (!session?.url) {
       return NextResponse.json({ error: "Stripe nao retornou URL de pagamento." }, { status: 502 });
     }
