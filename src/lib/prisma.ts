@@ -1,5 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 
+function normalizeEnvUrl(name: "DATABASE_URL" | "DIRECT_URL") {
+  const value = process.env[name];
+  if (!value) return;
+
+  const trimmed = value.trim();
+  const hasDoubleQuotes = trimmed.startsWith('"') && trimmed.endsWith('"');
+  const hasSingleQuotes = trimmed.startsWith("'") && trimmed.endsWith("'");
+
+  process.env[name] = hasDoubleQuotes || hasSingleQuotes ? trimmed.slice(1, -1) : trimmed;
+}
+
+normalizeEnvUrl("DATABASE_URL");
+normalizeEnvUrl("DIRECT_URL");
+
 const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;
 };
