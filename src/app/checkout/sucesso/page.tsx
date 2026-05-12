@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CheckCircle2, Settings } from "lucide-react";
 import { formatPrice, orderStatusLabel, paymentStatusLabel } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
+import { syncStripeCheckoutSession } from "@/lib/stripe";
 
 export const metadata: Metadata = {
   title: "Pedido recebido",
@@ -20,11 +21,18 @@ function getParam(searchParams: Record<string, string | string[] | undefined>, k
 export default async function CheckoutSuccessPage({ searchParams }: SuccessPageProps) {
   const params = await searchParams;
   const orderId = getParam(params, "order") || getParam(params, "external_reference");
+  const stripeSessionId = getParam(params, "session_id");
   const setup = getParam(params, "setup");
+  let resolvedOrderId = orderId;
 
-  const order = orderId
+  if (stripeSessionId) {
+    const synced = await syncStripeCheckoutSession(stripeSessionId).catch(() => null);
+    resolvedOrderId = resolvedOrderId || synced?.orderId || undefined;
+  }
+
+  const order = resolvedOrderId
     ? await prisma.order.findUnique({
-        where: { id: orderId },
+        where: { id: resolvedOrderId },
         include: { items: true },
       })
     : null;
@@ -34,12 +42,12 @@ export default async function CheckoutSuccessPage({ searchParams }: SuccessPageP
       <div className="mx-auto max-w-3xl rounded-lg border border-[#dbe4f0] bg-white p-7 text-center shadow-xl">
         {setup ? <Settings className="mx-auto text-[#f4b227]" size={44} /> : <CheckCircle2 className="mx-auto text-[#20a33a]" size={44} />}
         <h1 className="mt-4 font-display text-4xl font-black text-[#202838]">
-          {setup ? "Pedido salvo. Falta configurar o Mercado Pago." : "Pedido recebido"}
+          {setup ? "Pedido salvo. Falta configurar o Stripe." : "Pedido recebido"}
         </h1>
         <p className="mt-3 text-[#5e6a7d]">
           {setup
-            ? "A venda real fica ativa assim que MERCADO_PAGO_ACCESS_TOKEN for preenchido no .env."
-            : "A confirmacao do pagamento sera refletida no pedido assim que o Mercado Pago notificar a loja."}
+            ? "A venda real fica ativa assim que STRIPE_SECRET_KEY e STRIPE_WEBHOOK_SECRET forem preenchidos."
+            : "A confirmacao do pagamento sera refletida no pedido assim que o Stripe confirmar a transacao."}
         </p>
 
         {order && (

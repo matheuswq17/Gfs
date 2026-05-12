@@ -51,7 +51,7 @@ export function Footer() {
             <div className="mt-4 space-y-3 text-sm text-white/72">
               <p>contato@gfsvariemix.com.br</p>
               <p>Segunda a sexta, 8h as 18h</p>
-              <p>Pix e cartao processados via Mercado Pago.</p>
+              <p>Pix, credito e debito processados via Stripe.</p>
             </div>
           </div>
         </div>

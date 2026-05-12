@@ -81,9 +81,8 @@ model Order {
   paymentMethod            String
   status                   String      @default("PENDING")
   paymentStatus            String      @default("WAITING")
-  mercadoPagoPreferenceId  String?
-  mercadoPagoPaymentId     String?
-  mercadoPagoInitPoint     String?
+  stripeCheckoutSessionId   String?
+  stripePaymentIntentId     String?
   items                    OrderItem[]
   createdAt                DateTime    @default(now())
   updatedAt                DateTime    @updatedAt

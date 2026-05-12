@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | GFS Variemix Brasil",
   },
   description:
-    "Loja virtual brasileira de produtos variados com catalogo organizado, pagamento por Pix e cartao via Mercado Pago e gestao administrativa.",
+    "Loja virtual brasileira de produtos variados com catalogo organizado, pagamento por Pix e cartao via Stripe e gestao administrativa.",
   openGraph: {
     title: "GFS Variemix Brasil",
     description: "Distribuidora multimarcas com e-commerce funcional, catalogo e checkout real.",

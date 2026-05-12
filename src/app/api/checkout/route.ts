@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth";
 import { getBaseUrl } from "@/lib/format";
-import { createMercadoPagoPreference, hasMercadoPagoCredentials } from "@/lib/mercadopago";
 import { prisma } from "@/lib/prisma";
+import { createStripeCheckoutSession, hasStripeCredentials } from "@/lib/stripe";
 import { checkoutSchema } from "@/lib/validators";
 
 function generateOrderCode() {
@@ -80,31 +80,31 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  if (!hasMercadoPagoCredentials()) {
+  if (!hasStripeCredentials()) {
     return NextResponse.json({
       orderId: order.id,
       orderCode: order.code,
       providerConfigured: false,
-      redirectUrl: `${getBaseUrl()}/checkout/sucesso?order=${order.id}&setup=mercado-pago`,
+      redirectUrl: `${getBaseUrl()}/checkout/sucesso?order=${order.id}&setup=stripe`,
     });
   }
 
   try {
-    const preference = await createMercadoPagoPreference(order.id);
-    if (!preference?.initPoint) {
-      return NextResponse.json({ error: "Mercado Pago nao retornou URL de pagamento." }, { status: 502 });
+    const session = await createStripeCheckoutSession(order.id);
+    if (!session?.url) {
+      return NextResponse.json({ error: "Stripe nao retornou URL de pagamento." }, { status: 502 });
     }
 
     return NextResponse.json({
       orderId: order.id,
       orderCode: order.code,
       providerConfigured: true,
-      redirectUrl: preference.initPoint,
+      redirectUrl: session.url,
     });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Pedido criado, mas houve falha ao criar a preferencia do Mercado Pago." },
+      { error: "Pedido criado, mas houve falha ao criar a sessao de pagamento do Stripe." },
       { status: 502 },
     );
   }

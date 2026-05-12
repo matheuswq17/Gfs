@@ -73,7 +73,7 @@ export default async function Home() {
             <div className="mt-9 grid gap-3 sm:grid-cols-3">
               {[
                 ["5", "Produtos reais no catalogo"],
-                ["Pix", "Checkout Mercado Pago"],
+                ["Pix", "Checkout Stripe"],
                 ["Admin", "Gestao de produtos"],
               ].map(([value, label]) => (
                 <div key={value} className="metric-card rounded-lg border border-[#dbe4f0] bg-white/78 p-4 shadow-sm backdrop-blur">
@@ -120,7 +120,7 @@ export default async function Home() {
         <div className="grid gap-4 md:grid-cols-4">
           {[
             [PackageSearch, "Catalogo com SKU", "Busca por nome, categoria e codigo interno."],
-            [CreditCard, "Pix e cartao", "Pagamento via Mercado Pago, pronto para sandbox e producao."],
+            [CreditCard, "Pix e cartao", "Pagamento via Stripe, pronto para teste e producao."],
             [ShieldCheck, "Conta e pedidos", "Login, cadastro e historico basico do comprador."],
             [Truck, "Operacao comercial", "Pedidos persistidos para acompanhamento administrativo."],
           ].map(([Icon, title, text]) => (

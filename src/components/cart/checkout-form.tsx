@@ -156,7 +156,7 @@ export function CheckoutForm() {
               >
                 <QrCode className="text-[#20a33a]" size={24} />
                 <span className="mt-3 block font-display text-lg font-black text-[#202838]">Pix</span>
-                <span className="mt-1 block text-sm text-[#66758a]">Gerado pelo checkout Mercado Pago.</span>
+                <span className="mt-1 block text-sm text-[#66758a]">QR Code gerado com segurança pelo Stripe Checkout.</span>
               </button>
               <button
                 type="button"
@@ -167,7 +167,7 @@ export function CheckoutForm() {
               >
                 <CreditCard className="text-[#063f8f]" size={24} />
                 <span className="mt-3 block font-display text-lg font-black text-[#202838]">Cartao</span>
-                <span className="mt-1 block text-sm text-[#66758a]">Credito pelo ambiente seguro do Mercado Pago.</span>
+                <span className="mt-1 block text-sm text-[#66758a]">Credito ou debito pelo ambiente seguro do Stripe.</span>
               </button>
             </div>
           </section>
@@ -201,7 +201,7 @@ export function CheckoutForm() {
           </button>
           <p className="mt-3 text-xs leading-5 text-[#66758a]">
             O pedido e salvo antes do redirecionamento. O webhook atualiza o status quando o Mercado
-            Pago confirma a transacao.
+            Stripe confirma a transacao.
           </p>
         </aside>
       </form>

@@ -44,6 +44,7 @@ export function paymentStatusLabel(status: string) {
     APPROVED: "Aprovado",
     PENDING: "Em analise",
     REJECTED: "Recusado",
+    FAILED: "Falhou",
     REFUNDED: "Estornado",
   };
 
