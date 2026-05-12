@@ -8,7 +8,7 @@ export function formatPrice(cents: number) {
 export function slugify(value: string) {
   return value
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)+/g, "");
@@ -24,7 +24,7 @@ export function parseSpecs(value: string): Record<string, string> {
 }
 
 export function getBaseUrl(origin?: string) {
-  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL;
+  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL.replace(/^\uFEFF/, "").trim();
   if (origin) return origin;
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 
