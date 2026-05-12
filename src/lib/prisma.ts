@@ -4,7 +4,13 @@ function normalizeEnvUrl(name: "DATABASE_URL" | "DIRECT_URL") {
   const value = process.env[name];
   if (!value) return;
 
-  const trimmed = value.trim();
+  let trimmed = value.trim();
+  const assignmentPrefix = `${name}=`;
+
+  if (trimmed.startsWith(assignmentPrefix)) {
+    trimmed = trimmed.slice(assignmentPrefix.length).trim();
+  }
+
   const hasDoubleQuotes = trimmed.startsWith('"') && trimmed.endsWith('"');
   const hasSingleQuotes = trimmed.startsWith("'") && trimmed.endsWith("'");
 
