@@ -22,6 +22,8 @@ E-commerce funcional em Next.js, TypeScript, Tailwind CSS, Prisma e Stripe, cria
 
 ```bash
 npm install
+cp .env.example .env
+# preencha DATABASE_URL e DIRECT_URL com as strings do Supabase
 npm run setup
 npm run dev
 ```
@@ -41,10 +43,12 @@ Credenciais seed:
 Copie `.env.example` para `.env` e ajuste:
 
 ```env
-DATABASE_URL="file:./dev.db"
+DATABASE_URL="postgresql://postgres.[PROJECT-REF]:[DB-PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.[PROJECT-REF]:[DB-PASSWORD]@aws-0-[REGION].pooler.supabase.com:5432/postgres"
 AUTH_SECRET="troque-por-uma-string-longa-e-unica"
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 STRIPE_SECRET_KEY=""
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=""
 STRIPE_WEBHOOK_SECRET=""
 STRIPE_PRICE_MAP=""
 ```
@@ -73,13 +77,25 @@ Quando o pagamento volta como aprovado, o pedido muda para `PAID`, o pagamento p
 
 ## Banco de dados
 
-O projeto vem com SQLite para rodar imediatamente em qualquer maquina:
+O projeto usa Supabase PostgreSQL via Prisma. No painel do Supabase, pegue as strings em:
 
-```env
-DATABASE_URL="file:./dev.db"
+- `Project Settings` > `Database` > `Connection string`
+- Preferencialmente na aba/guia `ORMs` > `Prisma`, quando disponivel
+
+Use:
+
+- `DATABASE_URL`: Transaction Pooler/Supavisor, porta `6543`, para runtime na Vercel.
+- `DIRECT_URL`: Session Pooler/Supavisor, porta `5432`, para `prisma db push` e outros comandos de schema. Se o painel oferecer a string Direct connection e ela funcionar no seu ambiente, tambem pode ser usada aqui.
+
+Depois de preencher o `.env`, rode:
+
+```bash
+npx prisma generate
+npx prisma db push
+npm run db:seed
 ```
 
-Para publicacao definitiva, use um banco persistente como Supabase/PostgreSQL. Sem banco persistente, o fallback SQLite empacotado funciona para demonstracao na Vercel, mas dados criados em runtime podem ser reiniciados em novos deploys ou cold starts.
+O seed recria produtos, posts, admin e cliente de exemplo. Evite rodar `npm run db:seed` em producao depois que pedidos reais existirem, porque ele limpa tabelas antes de popular os dados.
 
 ## Onde trocar marca e produtos
 

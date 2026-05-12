@@ -141,16 +141,19 @@ export async function createStripeCheckoutSession(orderId: string, origin?: stri
 }
 
 async function updatePaidOrder(orderId: string, stripePaymentIntentId?: string) {
-  const current = await prisma.order.findUnique({
-    where: { id: orderId },
-    include: { items: true },
-  });
-
-  if (!current) return null;
-
   return prisma.$transaction(async (tx) => {
-    const updated = await tx.order.update({
+    const current = await tx.order.findUnique({
       where: { id: orderId },
+      include: { items: true },
+    });
+
+    if (!current) return null;
+
+    const markedPaid = await tx.order.updateMany({
+      where: {
+        id: orderId,
+        status: { not: "PAID" },
+      },
       data: {
         status: "PAID",
         paymentStatus: "APPROVED",
@@ -158,7 +161,7 @@ async function updatePaidOrder(orderId: string, stripePaymentIntentId?: string) 
       },
     });
 
-    if (current.status !== "PAID") {
+    if (markedPaid.count > 0) {
       for (const item of current.items) {
         if (item.productId) {
           await tx.product.update({
@@ -169,7 +172,7 @@ async function updatePaidOrder(orderId: string, stripePaymentIntentId?: string) 
       }
     }
 
-    return updated;
+    return tx.order.findUnique({ where: { id: orderId } });
   });
 }
 
