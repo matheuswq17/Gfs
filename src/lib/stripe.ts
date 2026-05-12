@@ -25,7 +25,7 @@ export function hasStripeCredentials() {
 }
 
 function getStripeClient() {
-  const secretKey = process.env.STRIPE_SECRET_KEY;
+  const secretKey = process.env.STRIPE_SECRET_KEY?.replace(/^\uFEFF/, "").trim();
   if (!secretKey) return null;
 
   return new Stripe(secretKey, {

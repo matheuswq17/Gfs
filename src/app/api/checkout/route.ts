@@ -119,10 +119,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      {
-        error: "Pedido criado, mas houve falha ao criar a sessao de pagamento do Stripe.",
-        stripeError: request.headers.get("x-gfs-debug") === "stripe" ? stripeError : undefined,
-      },
+      { error: "Pedido criado, mas houve falha ao criar a sessao de pagamento do Stripe." },
       { status: 502 },
     );
   }
