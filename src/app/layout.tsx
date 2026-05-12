@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import { AppChrome } from "@/components/layout/app-chrome";
 import { CartProvider } from "@/components/cart/cart-provider";
+import { getBaseUrl } from "@/lib/format";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,7 +17,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  metadataBase: new URL(getBaseUrl()),
   title: {
     default: "GFS Variemix Brasil | E-commerce e distribuicao multimarcas",
     template: "%s | GFS Variemix Brasil",

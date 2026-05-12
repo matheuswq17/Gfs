@@ -58,7 +58,7 @@ Os Price IDs dos 5 produtos ja estao mapeados por SKU em `src/lib/stripe.ts`.
 Webhook para cadastrar no Stripe:
 
 ```txt
-https://sua-url.com/api/stripe/webhook
+https://gfs-brown.vercel.app/api/stripe/webhook
 ```
 
 Eventos recomendados:
